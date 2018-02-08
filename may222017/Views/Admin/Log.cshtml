@@ -1,0 +1,16 @@
+﻿@model string
+@{
+    ViewBag.Title = "Log";
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <h2>Log</h2>
+        @Model<br />
+        <div style="margin-top: 10px;">
+            <a href='@Url.Action("Index",routeValues:null)'><button class="btn btn-default">Back to Admin Page</button></a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,176 @@
+﻿@model may222017.Models.Places
+@{
+    ViewBag.Title = "Venue";
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
+}
+
+
+
+<div class="container">
+    <div  style="height: 300px !important;" class="row">
+        <div class="col-md-12">
+
+            <div id="sldier-wrapper" style="width:100%;">
+                <ul class="bxslider">
+
+                    @foreach (var item in Model.Links)
+                    {
+                        string imageBase64 = Convert.ToBase64String(item.ImageData);
+                        string imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                        <img @*style="height:auto !important; width:auto !important; object-fit:cover !important"*@ class="img-responsive"  src="@imageSrc" />
+                    }
+
+                    @*<li><img src="/images/pic1.jpg" /></li>
+                        <li><img src="/images/pic2.jpg" /></li>
+                        <li><img src="/images/pic3.jpg" /></li>
+                        <li><img src="/images/pic4.jpg" /></li>*@
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>
+                @Model.PlaceName
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <h4>Accomodation:</h4>            
+            <p>@Model.Accomodation</p>
+
+            <h4>Air Condtioning:</h4>
+            @if (Model.AirConditioning == true)
+            {
+                <p>Available</p>
+            }
+            else
+            {
+                <p>Not Available</p>
+            }
+
+            <h4>Bridal Room:</h4>
+            @if (Model.BridalRoom == true)
+            {
+                <p>Available</p>
+            }
+            else
+            {
+                <p>Not Available</p>
+            }
+        </div>
+        <div class="col-md-3">
+            <h4>Cold Drinks:</h4>
+            @if (Model.ColdDrink == true)
+            {
+                <p>Available</p>
+            }
+            else
+            {
+                <p>Not Available</p>
+            }
+
+            <h4>Event Type:</h4>
+            <p>@Model.EventType</p>
+
+            <h4>Catering:</h4>
+            @if (Model.IsCateringAvailable == true)
+            {
+                <p>Available</p>
+            }
+            else
+            {
+                <p>Not Available</p>
+            }
+
+        </div>
+        <div class="col-md-3">
+            <h4>Minimum Price:</h4>
+            <p>@Model.MinPriceRange</p>
+
+            <h4>Maximum Price:</h4>
+            <p>@Model.MaxPriceRange</p>
+
+            <h4>Party Lights:</h4>
+            @if (Model.PartyLight == true)
+            {
+                <p>Available</p>
+            }
+            else
+            {
+                <p>Not Available</p>
+            }
+
+        </div>
+        <div class="col-md-3">
+            <h4>Screen:</h4>
+            @if (Model.Screen == true)
+            {
+                <p>Available</p>
+            }
+            else
+            {
+                <p>Not Available</p>
+            }
+
+            <h4>Sound System:</h4>
+            @if (Model.SoundSystem == true)
+            {
+                <p>Available</p>
+            }
+            else
+            {
+                <p>Not Available</p>
+            }
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Location</h2>            
+        </div>        
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Address:</h4>
+            <p>@Model.Address</p>
+        </div>
+        <div class="col-md-6">
+            <h4>Town:</h4>
+            <p>@Model.Town</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Contact</h2>            
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Telephone:</h4>
+            <p>@Model.Telephone</p>
+            <h4>Cell Number:</h4>
+            <p>@Model.CellNumber</p>            
+        </div>
+        <div class="col-md-6">
+            <h4>Email:</h4>
+            <p>@Model.Email</p>
+            <h4>Website:</h4>
+            <p>@Model.Website</p>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('.bxslider').bxSlider();
+    });
+</script>

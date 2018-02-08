@@ -1,0 +1,179 @@
+﻿@model may222017.Models.Places
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h2>Edit</h2>
+        <h4>Place</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PlaceName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PlaceName)
+                @Html.ValidationMessageFor(model => model.PlaceName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address)
+                @Html.ValidationMessageFor(model => model.Address)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Town, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Town)
+                @Html.ValidationMessageFor(model => model.Town)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Telephone, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Telephone)
+                @Html.ValidationMessageFor(model => model.Telephone)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CellNumber, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CellNumber)
+                @Html.ValidationMessageFor(model => model.CellNumber)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Website, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Website)
+                @Html.ValidationMessageFor(model => model.Website)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaxPriceRange, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaxPriceRange)
+                @Html.ValidationMessageFor(model => model.MaxPriceRange)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.MinPriceRange, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MinPriceRange)
+                @Html.ValidationMessageFor(model => model.MinPriceRange)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Accomodation, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Accomodation)
+                @Html.ValidationMessageFor(model => model.Accomodation)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.AirConditioning, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.AirConditioning, "true") Yes
+                @Html.RadioButtonFor(model => model.AirConditioning, "false") No
+                @Html.ValidationMessageFor(model => model.AirConditioning)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.BridalRoom, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.BridalRoom, "true") Yes
+                @Html.RadioButtonFor(model => model.BridalRoom, "false") No
+                @Html.ValidationMessageFor(model => model.BridalRoom)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsCateringAvailable, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.IsCateringAvailable, "true") Yes
+                @Html.RadioButtonFor(model => model.IsCateringAvailable, "false") No
+                @Html.ValidationMessageFor(model => model.IsCateringAvailable)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ColdDrink, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.ColdDrink, "true") Yes
+                @Html.RadioButtonFor(model => model.ColdDrink, "false") No
+                @Html.ValidationMessageFor(model => model.ColdDrink)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PartyLight, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.PartyLight, "true") Yes
+                @Html.RadioButtonFor(model => model.PartyLight, "false") No
+                @Html.ValidationMessageFor(model => model.PartyLight)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SoundSystem, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.SoundSystem, "true") Yes
+                @Html.RadioButtonFor(model => model.SoundSystem, "false") No
+                @Html.ValidationMessageFor(model => model.SoundSystem)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Screen, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.Screen, "true") Yes
+                @Html.RadioButtonFor(model => model.Screen, "false") No
+                @Html.ValidationMessageFor(model => model.Screen)
+            </div>
+        </div>
+        @*Event Type To be Added HEre*@
+
+        <div class="row">
+            <div class="file-uploads">
+                <input class="form-control col-md-2" type="file" id="file" name="file" multiple="multiple" required /> <br />
+                @*<input class="form-control col-md-2" type="file" id="file" name="file" multiple="multiple" required /> <br />
+                <input class="form-control col-md-2" type="file" id="file" name="file" multiple="multiple" required /> <br />
+                <input class="form-control col-md-2" type="file" id="file" name="file" multiple="multiple" required /> <br />
+                <input class="form-control col-md-2" type="file" id="file" name="file" multiple="multiple" required /> <br />*@
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save Changes" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+
+}
+
+<script>
+    $(document).ready(function () {
+        $('.file-uploads input').change(function () {
+            $('.file-uploads').append('<input class="form-control col-md-2" type="file" id="file" name="file" multiple="multiple" required />');
+        });
+    });
+</script>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,65 @@
+﻿@model PagedList.IPagedList<may222017.Models.ApplicationUser>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
+}
+
+<div class="container">
+    <h2>Admin</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+
+
+            @using (Html.BeginForm("Index", "Admin", FormMethod.Get))
+            {
+                <div class="form-group">
+                    Search:&nbsp; @Html.TextBox("searchString", ViewBag.currentFilter as string)
+                    <input type="submit" value="search" />
+                </div>
+
+            }
+        </div>
+
+        <div class="col-md-6">
+            <a href='@Url.Action("PlaceStatus", routeValues:null)'><button class="btn btn-default">Hall Manager</button></a>
+            <a href='@Url.Action("Log", routeValues:null)'><button class="btn btn-default">Update Log</button></a>
+        </div>
+
+    </div>
+    <br />
+
+    <table class="table">
+        <tr>
+            <th>
+                Email
+            </th>
+            <th>
+                Locked Out
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })|
+                    @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
+                    {
+                        @Html.ActionLink("Delete", "DeleteUser", new { UserName = item.UserName },
+                   new { onclick = "return confirm(Are you sure to delete?);" })
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<div class="text-center" id="pagination">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>

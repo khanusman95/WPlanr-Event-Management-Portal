@@ -1,0 +1,58 @@
+﻿@model PagedList.IPagedList<may222017.Models.Places>
+    @using PagedList.Mvc;
+@{
+    ViewBag.Title = "PlaceStatus";
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
+}
+
+<div class="container">
+    <h2>PlaceStatus</h2>
+    @using (Html.BeginForm("PlaceStatus", "Admin", FormMethod.Get))
+    {
+        <div class="form-group">
+            Search:&nbsp; @Html.TextBox("searchString", ViewBag.currentFilter as string)
+            <input type="submit" value="search" />
+        </div>
+
+    }
+    <br />
+
+    <table class="table">
+        <tr>
+            <th>
+                Place
+            </th>
+            <th>
+                Locked Out
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlaceName)
+                </td>
+                <td>
+                    @Html.ActionLink("Approve", "Approve", new { Id = item.Id })|
+                    @Html.ActionLink("Delete", "Delete", new { Id = item.Id },
+                   new { onclick = "return confirm(Are you sure to delete?);" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<br />
+
+<div class="text-center" id="pagination">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>
+
+<div class="container">
+    <div class="row">
+        <a href='@Url.Action("Index",routeValues:null)'><button class="btn btn-default">Back to Admin Page</button></a>
+    </div>
+</div>
+
